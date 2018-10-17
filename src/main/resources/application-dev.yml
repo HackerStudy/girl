@@ -1,0 +1,15 @@
+##关于端口号和url的访问前缀的配置
+server:
+  port: 8080
+  servlet:
+    context-path: /girl
+cupSize: B
+age: 18
+##在配置中在使用配置
+content: "cupSize: ${cupSize},age: ${age}}"
+##将配置分组||将配置写到一个类里面去（推荐）
+girl:
+  cupSize: B
+  age: 18
+
+
