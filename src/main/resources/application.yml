@@ -1,4 +1,3 @@
-
 spring:
   #测试环境和生产环境之间的配置文件的切换
   profiles:
@@ -6,12 +5,17 @@ spring:
   #数据库
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306:dbgirl
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl?useSSL=false
     username: root
     password: 123456
   #spring-data-jpa配置
+
   jpa:
     hibernate:
-      ddl-auto: create #ddl:createy
-    show-sql: true #
+      #ddl-auto: create #ddl:create：每次运行时自动创建表（如果之前有的话会先删除表再创建）
+      # ddl:create-drop: 应用停下来的时候回删除掉表
+      # ddl:none: 什么都不做
+      # ddl:validate: 验证类里面的属性和表中的字段是否一致，不一致则会报错
+      dll-auto: update #ddl:update：第一次运行时自动创建表（如果之前有的话不会操作）
+    show-sql: true #可以在控制台看到sql语句，方便调试
 
