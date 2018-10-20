@@ -10,6 +10,9 @@ public class GirlController {
     @Autowired
     private GirlRepository girlRepository;
 
+    @Autowired
+    private GirlService girlService;
+
     /**
      * 查询所有女生列表
      * @return
@@ -68,5 +71,19 @@ public class GirlController {
     @DeleteMapping(value = "/girls/{id}")
     public void girlDelete(@PathVariable("id") Integer id){
         girlRepository.deleteById(id);//根据主键删除数据
+    }
+
+    /**
+     * 通过年龄查询女生列表
+     * @param age
+     */
+    @GetMapping(value = "/girls/age/{age}")
+    public List<Girl> findGirlByAge(@PathVariable("age") Integer age){
+        return girlRepository.findByAge(age);//根据年龄查询数据
+    }
+
+    @PostMapping("/girls/two")
+    public void saveTwoGirls(){
+        girlService.saveTwoGirl();
     }
 }
