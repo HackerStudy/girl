@@ -82,6 +82,9 @@ public class GirlController {
         return girlRepository.findByAge(age);//根据年龄查询数据
     }
 
+    /**
+     * 事务管理，新增两个女生的信息
+     */
     @PostMapping("/girls/two")
     public void saveTwoGirls(){
         girlService.saveTwoGirl();
