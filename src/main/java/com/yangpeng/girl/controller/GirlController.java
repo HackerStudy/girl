@@ -1,5 +1,8 @@
-package com.yangpeng.girl;
+package com.yangpeng.girl.controller;
 
+import com.yangpeng.girl.entity.Girl;
+import com.yangpeng.girl.dao.GirlRepository;
+import com.yangpeng.girl.service.GirlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -87,6 +90,7 @@ public class GirlController {
      */
     @PostMapping("/girls/two")
     public void saveTwoGirls(){
+        System.out.println("新增两个女生的信息");
         girlService.saveTwoGirl();
     }
 }

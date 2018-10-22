@@ -1,5 +1,6 @@
-package com.yangpeng.girl;
+package com.yangpeng.girl.dao;
 
+import com.yangpeng.girl.entity.Girl;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

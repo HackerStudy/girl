@@ -1,5 +1,7 @@
-package com.yangpeng.girl;
+package com.yangpeng.girl.service;
 
+import com.yangpeng.girl.dao.GirlRepository;
+import com.yangpeng.girl.entity.Girl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
