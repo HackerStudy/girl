@@ -93,4 +93,14 @@ public class GirlController {
         System.out.println("新增两个女生的信息");
         girlService.saveTwoGirl();
     }
+
+    /**
+     * 通过验证后新增一个女生
+     * @param girl
+     * @return
+     */
+    @PostMapping(value = "/girlsAndValidAge")
+    public Girl girlAndValidAgeAdd(Girl girl){
+        return girlRepository.save(girl);//save返回的是添加进去的对象
+    }
 }

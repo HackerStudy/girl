@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @date: 2018-10-17 11:08
  */
 @Component  //注入实体类的bean
-@ConfigurationProperties(prefix = "girl")  //读取配置文件girl这个一组的配置
+@ConfigurationProperties(prefix = "girl")//读取配置文件girl这个一组的配置
 public class GirlProperties {
     private String cupSize;
 
