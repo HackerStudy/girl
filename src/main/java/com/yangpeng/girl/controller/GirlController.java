@@ -1,15 +1,27 @@
 package com.yangpeng.girl.controller;
 
+import com.yangpeng.girl.aspect.HttpAspect;
+import com.yangpeng.girl.common.OtherResult;
+import com.yangpeng.girl.common.OtherResult2;
+import com.yangpeng.girl.common.Result;
 import com.yangpeng.girl.entity.Girl;
 import com.yangpeng.girl.dao.GirlRepository;
 import com.yangpeng.girl.service.GirlService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class GirlController {
+    private static  final Logger logger= LoggerFactory.getLogger(GirlController.class);
+
     @Autowired
     private GirlRepository girlRepository;
 
@@ -100,7 +112,66 @@ public class GirlController {
      * @return
      */
     @PostMapping(value = "/girlsAndValidAge")
-    public Girl girlAndValidAgeAdd(Girl girl){
+    public Object girlAndValidAgeAdd(@Valid Girl girl, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+//            System.out.println("未满18岁");
+            logger.error("未满18岁");
+            return "未满18岁";
+        }
         return girlRepository.save(girl);//save返回的是添加进去的对象
+    }
+
+    /**
+     * 通过验证后新增一个女生(返回值为Result)
+     * @param girl
+     * @return
+     */
+    @PostMapping(value = "/girlsAndValidAge2")
+    public Result<Girl> girlAndValidAgeAdd2(@Valid Girl girl, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+//            System.out.println("未满18岁");
+            logger.error("未满18岁");
+            return Result.error("未满18岁");
+        }
+        return Result.ok(girlRepository.save(girl));//save返回的是添加进去的对象
+    }
+
+    /**
+     * 通过验证后新增一个女生(返回值为OtherResult)
+     * @param girl
+     * @return
+     */
+    @PostMapping(value = "/girlsAndValidAge3")
+    public OtherResult girlAndValidAgeAdd3(@Valid Girl girl, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+//            System.out.println("未满18岁");
+            logger.error("未满18岁");
+            return OtherResult.error("未满18岁");
+        }
+        Girl girl1 = girlRepository.save(girl);
+//        Map<String,Object> map = new HashMap();
+//        map.put("id",girl1.getId());
+//        map.put("cupSize",girl1.getCupSize());
+//        map.put("age",girl1.getAge());
+//        OtherResult otherResult = new OtherResult();
+//        otherResult.setData(map);
+//        return otherResult;
+        return OtherResult.ok().putDataValue("girl",girl1);
+    }
+
+    /**
+     * 通过验证后新增一个女生(返回值为OtherResult2)
+     * @param girl
+     * @return
+     */
+    @PostMapping(value = "/girlsAndValidAge4")
+    public OtherResult2 girlAndValidAgeAdd4(@Valid Girl girl, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+//            System.out.println("未满18岁");
+            logger.error("未满18岁");
+            return OtherResult2.error("未满18岁");
+        }
+        Object obj = girlRepository.save(girl);
+        return OtherResult2.ok().putDataValue(obj);//save返回的是添加进去的对象
     }
 }

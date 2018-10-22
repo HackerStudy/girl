@@ -66,6 +66,12 @@
             <version>5.1.43</version>
         </dependency>
 
+        <!--Spring Boot aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
         <!-- 解决Spring Boot Configuration Annotation Processor not found in classpath问题-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -82,6 +88,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <fork>true</fork> <!--fork :  如果没有该项配置，肯呢个devtools不会起作用，即应用不会restart -->
+                    <!--<fork>false</fork>-->  <!--不加载热部署-->
                 </configuration>
             </plugin>
 
