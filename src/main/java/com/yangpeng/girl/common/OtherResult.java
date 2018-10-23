@@ -8,13 +8,13 @@ import java.util.Map;
 import java.util.Objects;
 
 public class OtherResult implements Serializable{
-
+    /** 序列化 */
     private static final long serialVersionUID = -7280043765160868923L;
-
+    /** 错误码 */
     private Integer code;
-
+    /** 提示信息 */
     private String msg;
-
+    /** 具体的内容 */
     private Map<String,Object> data = new HashMap<>();
 
     public OtherResult() {
@@ -31,6 +31,10 @@ public class OtherResult implements Serializable{
         this.msg = msg;
     }
 
+    /**
+     * 获取该类的序列号
+     * @return
+     */
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -84,11 +88,21 @@ public class OtherResult implements Serializable{
                 '}';
     }
 
+    /**
+     * 判断返回是否成功
+     * @return
+     */
     @JsonIgnore   //json忽略isSuccess()这个方法(后台推数据到前台的时候,就会把这个给忽略掉)
     public boolean isSuccess() {
         return this.code == ResultCode.SUCCESS.getCode();
     }
 
+    /**
+     *设置data的值
+     * @param key
+     * @param value
+     * @return
+     */
     public OtherResult putDataValue(String key,Object value){
         this.data.put(key,value);
         return this;

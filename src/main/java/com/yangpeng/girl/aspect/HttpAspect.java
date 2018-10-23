@@ -12,26 +12,52 @@ import javax.servlet.http.HttpServletRequest;
 
 @Aspect
 @Component
+/**
+ * http请求前后的一些数据的日志打印
+ */
 public class HttpAspect {
 
+    /** 序列化 */
     private static  final Logger logger= LoggerFactory.getLogger(HttpAspect.class);
 
+    /** com.yangpeng.girl.controller.GirlController包下面的公共方法需要被执行"AOP" */
     @Pointcut("execution(public * com.yangpeng.girl.controller.GirlController.*(..))")
     public void log(){
     }
 
+    /** com.yangpeng.girl.controller.GirlController包及其子包的方法需要被执行"AOP" */
+    @Pointcut("execution(* com.yangpeng.girl.controller.*.*(..))")
+    public void logController(){
+    }
+
+    /** 所以的方法都需要被执行"AOP" */
+    @Pointcut("execution(* *(..))")
+    public void logAll(){
+
+    }
+
+    /**
+     * 请求前的提示语句
+     */
     @Before("log()")
     public void doBeforeLog(){
 //        System.out.println("请求前");
         logger.info("请求前");
     }
 
+    /**
+     * 请求执行后的提示语句
+     */
     @After("log()")
     public void doAfterLog(){
 //        System.out.println("请求后");
         logger.info("请求后");
     }
 
+    /**
+     *获取请求的url,method,ip,class_method,args
+     * @param joinPoint
+     */
     @Before("log()")
     public void doBeforeHttpRequestLog(JoinPoint joinPoint){
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -48,6 +74,10 @@ public class HttpAspect {
         logger.info("args={}",joinPoint.getArgs());
     }
 
+    /**
+     *输出请求后的返回结果
+     * @param object
+     */
     @AfterReturning(returning = "object",pointcut = "log()")
     public void doAfterReturning(Object object){
         logger.info("response={}",object.toString());

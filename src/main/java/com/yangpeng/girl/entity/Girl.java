@@ -14,7 +14,7 @@ public class Girl {
 
     private String cupSize;
 
-    @Min(value = 18,message = "不满18岁")
+    @Min(value = 18,message = "不满18岁") //校验条件
     private Integer age;
 
     public Girl() {

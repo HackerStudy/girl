@@ -19,10 +19,11 @@ import javax.transaction.Transactional;
 @Service
 public class GirlService {
 
+    /** 日志 */
     private static  final Logger logger= LoggerFactory.getLogger(GirlService.class);
 
     @Autowired
-    private GirlRepository girlRepository;
+    private GirlRepository girlRepository;  //girl的数据库操作接口
 
     /**
      * 用事务管理来控制插入两个girl（要么同时执行成功，要么直接失败）

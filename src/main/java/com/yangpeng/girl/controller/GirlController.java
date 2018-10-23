@@ -1,6 +1,7 @@
 package com.yangpeng.girl.controller;
 
 import com.yangpeng.girl.aspect.HttpAspect;
+import com.yangpeng.girl.common.InData;
 import com.yangpeng.girl.common.OtherResult;
 import com.yangpeng.girl.common.OtherResult2;
 import com.yangpeng.girl.common.Result;
@@ -127,7 +128,7 @@ public class GirlController {
      * @return
      */
     @PostMapping(value = "/girlsAndValidAge2")
-    public Result<Girl> girlAndValidAgeAdd2(@Valid Girl girl, BindingResult bindingResult){
+    public Result<?> girlAndValidAgeAdd2(@Valid Girl girl, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
 //            System.out.println("未满18岁");
             logger.error("未满18岁");
@@ -173,5 +174,16 @@ public class GirlController {
         }
         Object obj = girlRepository.save(girl);
         return OtherResult2.ok().putDataValue(obj);//save返回的是添加进去的对象
+    }
+
+    /**
+     * 通过年龄查询女生列表
+     * @param inData
+     */
+    @PostMapping(value = "/girls/byAge")
+    public Result<?> findGirlsByAge(@RequestBody InData inData){
+        Map<String,Object> inMap = inData.getInMap();
+        Integer age = Integer.valueOf(inMap.get("age").toString());
+        return Result.ok(girlRepository.findByAge(age));//根据年龄查询数据
     }
 }
