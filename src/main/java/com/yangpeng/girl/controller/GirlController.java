@@ -7,11 +7,13 @@ import com.yangpeng.girl.common.OtherResult2;
 import com.yangpeng.girl.common.Result;
 import com.yangpeng.girl.entity.Girl;
 import com.yangpeng.girl.dao.GirlRepository;
+import com.yangpeng.girl.exception.RuleException;
 import com.yangpeng.girl.service.GirlService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -185,5 +187,27 @@ public class GirlController {
         Map<String,Object> inMap = inData.getInMap();
         Integer age = Integer.valueOf(inMap.get("age").toString());
         return Result.ok(girlRepository.findByAge(age));//根据年龄查询数据
+    }
+
+    /**
+     * 根据id查询女生年龄(抛出Exception异常)
+     * @param inData
+     */
+    @PostMapping(value = "/girls/byId")
+    public Result<?> getAgeByIdThrowException(@RequestBody InData inData) throws Exception{
+        Map<String,Object> inmap = inData.getInMap();
+        Integer id = Integer.parseInt(inmap.get("id").toString());
+        return girlService.getAgeByIdThrowException(id);
+    }
+
+    /**
+     * 根据id查询女生年龄(抛出RuleException异常)
+     * @param inData
+     */
+    @PostMapping(value = "/girls/byId2")
+    public Result<?> getAgeByIdThrowRuleException(@RequestBody InData inData) throws RuleException {
+        Map<String,Object> inmap = inData.getInMap();
+        Integer id = Integer.parseInt(inmap.get("id").toString());
+        return girlService.getAgeByIdThrowRuleException(id);
     }
 }
