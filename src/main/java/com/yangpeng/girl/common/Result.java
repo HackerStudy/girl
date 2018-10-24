@@ -1,7 +1,7 @@
 package com.yangpeng.girl.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.yangpeng.girl.enums.ResultCode;
+import com.yangpeng.girl.enums.ResultCodeEnum;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -108,20 +108,20 @@ public class Result<T> implements Serializable {
      */
     @JsonIgnore   //json忽略isSuccess()这个方法(后台推数据到前台的时候,就会把这个给忽略掉)
     public boolean isSuccess() {
-        return this.code == ResultCode.SUCCESS.getCode();
+        return this.code == ResultCodeEnum.SUCCESS.getCode();
     }
 
 
     public static <T> Result<T> ok(String msg,T data){
-        return new Result<T>(ResultCode.SUCCESS.getCode(),msg,data);
+        return new Result<T>(ResultCodeEnum.SUCCESS.getCode(),msg,data);
     }
 
     public static <T> Result<T> ok(T data){
-        return new Result<T>(ResultCode.SUCCESS.getCode(),ResultCode.SUCCESS.getDesc(),data);
+        return new Result<T>(ResultCodeEnum.SUCCESS.getCode(),ResultCodeEnum.SUCCESS.getDesc(),data);
     }
     
     public static <T> Result<T> error(String msg,T data){
-        return new Result<T>(ResultCode.ERROR.getCode(),msg,data);
+        return new Result<T>(ResultCodeEnum.ERROR.getCode(),msg,data);
     }
 
     public static <T> Result<T> error(Integer code,String msg,T data){
@@ -133,18 +133,18 @@ public class Result<T> implements Serializable {
     }
 
     public static <T> Result<T> error(){
-        return new Result<T>(ResultCode.ERROR.getCode(),ResultCode.ERROR.getDesc());
+        return new Result<T>(ResultCodeEnum.ERROR.getCode(),ResultCodeEnum.ERROR.getDesc());
     }
 
     public static <T> Result<T> error(T data){
-        return new Result<T>(ResultCode.ERROR.getCode(),ResultCode.ERROR.getDesc(),data);
+        return new Result<T>(ResultCodeEnum.ERROR.getCode(),ResultCodeEnum.ERROR.getDesc(),data);
     }
 
     public static <T> Result<T> error(String msg){
-        return new Result<T>(ResultCode.ERROR.getCode(),msg);
+        return new Result<T>(ResultCodeEnum.ERROR.getCode(),msg);
     }
 
     public static <T> Result<T> error500(String msg){
-        return new Result<T>(ResultCode.ERROR500.getCode(),msg);
+        return new Result<T>(ResultCodeEnum.ERROR500.getCode(),msg);
     }
 }

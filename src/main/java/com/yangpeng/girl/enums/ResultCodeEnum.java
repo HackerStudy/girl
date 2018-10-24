@@ -3,7 +3,7 @@ package com.yangpeng.girl.enums;
 /**
  * 错误码的枚举类
  */
-public enum ResultCode {
+public enum ResultCodeEnum {
     SUCCESS(200,"SUCCESS"), //成功
     ERROR(1,"ERROR"),   //失败
     ERROR500(500,"ERROR500"), //服务端储出现的500错误
@@ -16,7 +16,7 @@ public enum ResultCode {
     /** 提示信息 */
     private final String desc;
 
-    ResultCode(Integer code, String desc) {
+    ResultCodeEnum(Integer code, String desc) {
         this.code = code;
         this.desc = desc;
     }
@@ -26,8 +26,8 @@ public enum ResultCode {
      * @param code
      * @return
      */
-    public static ResultCode getResultCodeByCode(Integer code) {
-        for (ResultCode resultCode : ResultCode.values()) {
+    public static ResultCodeEnum getResultCodeEnumByCode(Integer code) {
+        for (ResultCodeEnum resultCode : ResultCodeEnum.values()) {
             if (resultCode.getCode().equals(code)) {
                 return resultCode;
             }
@@ -45,7 +45,7 @@ public enum ResultCode {
 
     @Override
     public String toString() {
-        return "ResultCode{" +
+        return "ResultCodeEnum{" +
                 "code=" + code +
                 ", desc='" + desc + '\'' +
                 '}';

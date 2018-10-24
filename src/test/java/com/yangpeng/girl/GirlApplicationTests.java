@@ -18,7 +18,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringBootTest //加载整个spring工程
 @WebAppConfiguration //由于是Web项目，Junit需要模拟ServletContext，因此我们需要给我们的测试类加上@WebAppConfiguration。
 public class GirlApplicationTests {
-
+    /** slf4日志*/
     public static final Logger logger = LoggerFactory.getLogger(GirlServiceTest.class);
 
     @Test

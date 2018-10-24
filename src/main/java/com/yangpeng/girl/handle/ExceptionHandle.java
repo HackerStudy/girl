@@ -21,7 +21,7 @@ public class ExceptionHandle {
     private static final Logger logger = LoggerFactory.getLogger(ExceptionHandle.class);
 
     /**
-     * 处理exception异常
+     * 处理exception异常，并打印异常输出
      * @param e
      * @return
      */

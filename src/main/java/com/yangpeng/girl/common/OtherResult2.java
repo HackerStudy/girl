@@ -1,7 +1,7 @@
 package com.yangpeng.girl.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.yangpeng.girl.enums.ResultCode;
+import com.yangpeng.girl.enums.ResultCodeEnum;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -99,7 +99,7 @@ public class OtherResult2 implements Serializable{
      */
     @JsonIgnore   //json忽略isSuccess()这个方法(后台推数据到前台的时候,就会把这个给忽略掉)
     public boolean isSuccess() {
-        return this.code == ResultCode.SUCCESS.getCode();
+        return this.code == ResultCodeEnum.SUCCESS.getCode();
     }
 
     /**
@@ -113,15 +113,15 @@ public class OtherResult2 implements Serializable{
     }
 
     public static OtherResult2 ok(){
-        return new OtherResult2(ResultCode.SUCCESS.getCode(),ResultCode.SUCCESS.getDesc());
+        return new OtherResult2(ResultCodeEnum.SUCCESS.getCode(),ResultCodeEnum.SUCCESS.getDesc());
     }
 
     public static OtherResult2 error(){
-        return new OtherResult2(ResultCode.ERROR.getCode(),ResultCode.ERROR.getDesc());
+        return new OtherResult2(ResultCodeEnum.ERROR.getCode(),ResultCodeEnum.ERROR.getDesc());
     }
 
     public static OtherResult2 error(String msg){
-        return new OtherResult2(ResultCode.ERROR.getCode(),msg);
+        return new OtherResult2(ResultCodeEnum.ERROR.getCode(),msg);
     }
 
 

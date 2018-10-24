@@ -1,6 +1,6 @@
 package com.yangpeng.girl.exception;
 
-import com.yangpeng.girl.enums.ResultCode;
+import com.yangpeng.girl.enums.ResultCodeEnum;
 
 /**
  * @class: RuleException
@@ -22,7 +22,7 @@ public class RuleException extends RuntimeException{
      * 依据枚举返回错误码和提示信息
      * @param resultCode
      */
-    public RuleException(ResultCode resultCode) {
+    public RuleException(ResultCodeEnum resultCode) {
         super(resultCode.getDesc());
         this.code = resultCode.getCode();
     }
