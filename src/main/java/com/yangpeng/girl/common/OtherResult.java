@@ -1,12 +1,16 @@
 package com.yangpeng.girl.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.yangpeng.girl.enums.ResultCode;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * 统一返回值类
+ */
 public class OtherResult implements Serializable{
     /** 序列化 */
     private static final long serialVersionUID = -7280043765160868923L;

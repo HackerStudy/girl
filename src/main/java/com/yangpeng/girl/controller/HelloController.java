@@ -24,6 +24,7 @@ import java.util.Map;
 //@ResponseBody
 @RequestMapping("/hello")
 public class HelloController {
+    /** slf4j日志*/
     private static  final Logger logger= LoggerFactory.getLogger(HelloController.class);
 
     @Value("${cupSize}")

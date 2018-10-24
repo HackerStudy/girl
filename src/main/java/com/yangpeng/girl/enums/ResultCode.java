@@ -1,6 +1,4 @@
-package com.yangpeng.girl.common;
-
-import org.aspectj.apache.bcel.classfile.Code;
+package com.yangpeng.girl.enums;
 
 /**
  * 错误码的枚举类

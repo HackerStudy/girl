@@ -21,8 +21,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 关于girl模块的控制器
+ */
 @RestController
 public class GirlController {
+    /** slf4j日志*/
     private static  final Logger logger= LoggerFactory.getLogger(GirlController.class);
 
     @Autowired

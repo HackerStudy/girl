@@ -1,6 +1,7 @@
 package com.yangpeng.girl.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.yangpeng.girl.enums.ResultCode;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
  * http请求返回的最外层对象
  */
 public class Result<T> implements Serializable {
-
+    /** 序列号 */
     private static final long serialVersionUID = 8169426942330219150L;
 
     /** 错误码 */

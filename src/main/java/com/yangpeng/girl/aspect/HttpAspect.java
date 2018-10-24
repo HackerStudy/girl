@@ -10,7 +10,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Aspect
+@Aspect //标注该类的是aop类
 @Component
 /**
  * http请求前后的一些数据的日志打印
@@ -41,7 +41,6 @@ public class HttpAspect {
      */
     @Before("log()")
     public void doBeforeLog(){
-//        System.out.println("请求前");
         logger.info("请求前");
     }
 
@@ -50,7 +49,6 @@ public class HttpAspect {
      */
     @After("log()")
     public void doAfterLog(){
-//        System.out.println("请求后");
         logger.info("请求后");
     }
 
