@@ -1,5 +1,7 @@
 package com.yangpeng.girl.exception;
 
+import com.yangpeng.girl.enums.ResultCode;
+
 /**
  * @class: RuleException
  * @description: 自定义规则处理异常（spring中只对抛出异常为RuntimeException才会做出事务回滚，
@@ -14,6 +16,15 @@ public class RuleException extends RuntimeException{
     public RuleException(Integer code,String message) {
         super(message);
         this.code = code;
+    }
+
+    /**
+     * 依据枚举返回错误码和提示信息
+     * @param resultCode
+     */
+    public RuleException(ResultCode resultCode) {
+        super(resultCode.getDesc());
+        this.code = resultCode.getCode();
     }
 
     public Integer getCode() {
