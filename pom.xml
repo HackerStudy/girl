@@ -6,9 +6,9 @@
     <groupId>com.yangpeng</groupId>
     <artifactId>girl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <!--<packaging>jar</packaging>-->
+    <packaging>jar</packaging>
     <!-- 打包成war包-->
-    <packaging>war</packaging>
+    <!--<packaging>war</packaging>-->
 
     <name>girl</name>
     <description>Demo project for Spring Boot</description>
@@ -82,11 +82,11 @@
         </dependency>
 
         <!--tomcat依赖，因配置外部TOMCAT 而配置-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
