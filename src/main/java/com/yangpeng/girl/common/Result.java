@@ -101,6 +101,10 @@ public class Result<T> implements Serializable {
                 '}';
     }
 
+    /**
+     * 判断返回是否成功
+     * @return
+     */
     @JsonIgnore   //json忽略isSuccess()这个方法(后台推数据到前台的时候,就会把这个给忽略掉)
     public boolean isSuccess() {
         return this.code == ResultCode.SUCCESS.getCode();
@@ -119,6 +123,14 @@ public class Result<T> implements Serializable {
         return new Result<T>(ResultCode.ERROR.getCode(),msg,data);
     }
 
+    public static <T> Result<T> error(Integer code,String msg,T data){
+        return new Result<T>(code,msg,data);
+    }
+
+    public static <T> Result<T> error(Integer code,String msg){
+        return new Result<T>(code,msg);
+    }
+
     public static <T> Result<T> error(){
         return new Result<T>(ResultCode.ERROR.getCode(),ResultCode.ERROR.getDesc());
     }
@@ -129,5 +141,9 @@ public class Result<T> implements Serializable {
 
     public static <T> Result<T> error(String msg){
         return new Result<T>(ResultCode.ERROR.getCode(),msg);
+    }
+
+    public static <T> Result<T> error500(String msg){
+        return new Result<T>(ResultCode.ERROR500.getCode(),msg);
     }
 }
