@@ -8,7 +8,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 /**
  * Springboot的启动类(打包方式为war)
  */
-@SpringBootApplication
+//@SpringBootApplication
 public class GirlApplicationWar extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
