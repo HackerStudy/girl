@@ -168,6 +168,8 @@ public class GirlController {
 
     /**
      * 通过验证后新增一个女生(返回值为OtherResult2)
+     * @Valid开启对Girl对象的数据校验
+     *BindingResult:封装了校验的结果
      * @param girl
      * @return
      */

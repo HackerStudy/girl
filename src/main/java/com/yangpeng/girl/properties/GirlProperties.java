@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
  */
 @Component  //注入实体类的bean
 @ConfigurationProperties(prefix = "girl")//读取配置文件girl这个一组的配置
+//@ConfigurationProperties(prefix = "girl",locations = "classpath:author.properties")
+// PropertySource默认取application.properties
+// @PropertySource(value = "config.properties") //获取config.properties配置文件中的东西
 public class GirlProperties {
     private String cupSize;
 
