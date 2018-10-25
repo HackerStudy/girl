@@ -20,7 +20,7 @@ import java.util.Map;
  * @date: 2018-10-24 14:51
  */
 
-public class GirlServiceTest extends GirlApplicationTests {
+public class GirlServiceTest extends ServiceTest {
 
     @Autowired
     private GirlService girlService;
@@ -32,12 +32,13 @@ public class GirlServiceTest extends GirlApplicationTests {
     public void getAgeByIdThrowRuleException(){
         Integer age = new Integer(0);
         try {
-            Girl girl = (Girl) girlService.getAgeByIdThrowRuleException(2).getData();
+            Girl girl = (Girl) girlService.getAgeByIdThrowRuleException(9).getData();
             age = girl.getAge();
         }catch (RuleException e){
             logger.error("【查询异常】",e);
         }
         Assert.assertEquals(new Integer(20),age); //断言
+        Assert.assertEquals("判断两个年龄是否相等",new Integer(20),age); //断言
     }
 
     @Test

@@ -1,9 +1,12 @@
 package com.yangpeng.girl.controller;
 
 import com.yangpeng.girl.GirlApplicationTests;
+import com.yangpeng.girl.service.GirlServiceTest;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,11 +26,8 @@ import static org.junit.Assert.*;
  * @author: yangpeng03614
  * @date: 2018-10-24 15:36
  */
-@AutoConfigureMockMvc   //注入一个MockMvc实例；
-public class GirlControllerTest extends GirlApplicationTests {
-    /**  MockMvc实现了对Http请求的模拟，能够直接使用网络的形式，转换到Controller的调用 */
-    @Autowired
-    private MockMvc mvc;
+
+public class GirlControllerTest extends ControllerTest {
 
     /**
      *测试girlListAPI（并测试请求地址，状态码，请求返回的内容）
