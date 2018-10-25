@@ -109,6 +109,14 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+            <!--为war包重命名-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warName>girl-0.0.1-SNAPSHOT</warName>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
