@@ -1,11 +1,17 @@
 package com.yangpeng.girl.controller;
 
 import com.yangpeng.girl.aspect.HttpAspect;
+import com.yangpeng.girl.common.Result;
 import com.yangpeng.girl.properties.GirlProperties;
+import javafx.application.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -38,6 +44,10 @@ public class HelloController {
 
     @Autowired
     private GirlProperties girlProperties;  //读取配置文件一组的数据
+
+    /** 通过Evnironment来获取配置文件中的值*/
+    @Autowired
+    private Environment env;
 
     /**
      * rest模式的get方法，返回传入数据和配置文件中数据的打印结果
@@ -139,6 +149,20 @@ public class HelloController {
 //    @DeleteMapping("/combinationMapping")
     public String combinationMapping(String context){
         return "context:"+context;
+    }
+
+    /**
+     * 通过Evnironment来获取配置文件中的值
+     * @return
+     */
+    @GetMapping("/getProperties")
+    public Result<?> getProperties(){
+        Map<String,Object> returnMap = new HashMap<>();
+        String cupSize = env.getProperty("girl.cupSize");
+        String age = env.getProperty("girl.age");
+        returnMap.put("cupSize",cupSize);
+        returnMap.put("age",age);
+        return Result.ok("成功获取到配置文件数据",returnMap);
     }
 
 }
