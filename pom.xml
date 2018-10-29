@@ -88,6 +88,20 @@
             <!--<scope>provided</scope>-->
         <!--</dependency>-->
 
+        <!--添加springboot默认的日志依赖-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-logging</artifactId>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!--添加fastjson依赖-->
         <dependency>
             <groupId>com.alibaba</groupId>

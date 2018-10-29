@@ -19,7 +19,6 @@ import java.util.Map;
  * @author: yangpeng03614
  * @date: 2018-10-24 14:51
  */
-
 public class GirlServiceTest extends ServiceTest {
 
     @Autowired

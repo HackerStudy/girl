@@ -21,7 +21,7 @@ public class ControllerTest extends GirlApplicationTests {
     public MockMvc mvc; // 模拟MVC对象，通过MockMvcBuilders.webAppContextSetup(this.wac).build()初始化。
 
     @Autowired
-    private WebApplicationContext wac; // 注入WebApplicationContext
+    private WebApplicationContext wac; // 注入WebApplicationContext（上下文容器）
 
     @Before // 在测试开始前初始化工作,MockMvcBuilders使用构建MockMvc对象   （项目拦截器有效）
     public void setup() {
