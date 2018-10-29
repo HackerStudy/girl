@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 
 /**
  * @class: GirlService
- * @description:
+ * @description: girl的service层
  * @author: yangpeng03614
  * @date: 2018-10-19 13:56
  */

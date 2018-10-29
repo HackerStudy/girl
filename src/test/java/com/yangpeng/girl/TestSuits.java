@@ -1,6 +1,8 @@
 package com.yangpeng.girl;
 
 import com.yangpeng.girl.controller.GirlControllerTest;
+import com.yangpeng.girl.controller.HelloController;
+import com.yangpeng.girl.controller.HelloControllerTest;
 import com.yangpeng.girl.service.GirlServiceTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -12,6 +14,6 @@ import org.junit.runners.Suite;
  * @date: 2018-10-24 16:40
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({GirlControllerTest.class,GirlServiceTest.class})
+@Suite.SuiteClasses({GirlControllerTest.class,HelloControllerTest.class,GirlServiceTest.class})
 public class TestSuits{
 }

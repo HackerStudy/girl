@@ -20,13 +20,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 /**
  * @class: HelloControllerTest
- * @description:
+ * @description: HelloController的测试类
  * @author: yangpeng03614
  * @date: 2018-10-25 15:16
  */
 
 public class HelloControllerTest extends ControllerTest {
 
+    /**
+     * 获取配置文件中的值（api测试）
+     * @throws Exception
+     */
     @Test
     public void getProperties() throws Exception{
         String requestBody = "{\"id\":1, \"name\":\"zhang\"}"; //模拟的json请求类型
