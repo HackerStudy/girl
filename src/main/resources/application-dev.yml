@@ -15,6 +15,7 @@ girl:
 #配置日志输出
 logging:
   pattern:
-  path: /ToolSoftWare/IDEA/WorkSpace/MyProject/girl/logs/ #日志输出目录
-  file: /ToolSoftWare/IDEA/WorkSpace/MyProject/girl/logs/girl.log #日志输出文件
+  #path和file不能同时使用（如使用path则会在指定目录下面创建一个spring.log文件）
+#  path: /ToolSoftWare/IDEA/WorkSpace/MyProject/girl/logs/ #日志输出目录
+  file: logs/girl.log #日志输出文件
 

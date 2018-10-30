@@ -25,5 +25,6 @@ public class LogTest {
     public void writeLog(){
         log.info("输出到girl.log文件中");
         log.warning("将警告输出到girl.log文件中");
+        log.info("10月30");
     }
 }
