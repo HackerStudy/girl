@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author: yangpeng03614
  * @date: 2018-10-24 09:51
  */
-@ControllerAdvice
+@ControllerAdvice //controller 增强器
 public class ExceptionHandle {
 
     private static final Logger logger = LoggerFactory.getLogger(ExceptionHandle.class);
