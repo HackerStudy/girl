@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author: yangpeng03614
  * @date: 2018-10-24 09:51
  */
+//基于@ControllerAdvice注解的全局异常统一处理只能针对于Controller层的异常，意思是只能捕获到Controller层的异常，在service层或者其他层面的异常都不能捕获。
 @ControllerAdvice //controller 增强器
 public class ExceptionHandle {
 
@@ -31,7 +32,7 @@ public class ExceptionHandle {
         if(e instanceof RuleException){
             return Result.error(((RuleException) e).getCode(),e.getMessage());
         }
-        logger.error("【系统异常】",e);
+        logger.error("【系统异常】捕获到Exception异常",e);
         return Result.error500(e.getMessage());
     }
 
@@ -44,6 +45,7 @@ public class ExceptionHandle {
     @ExceptionHandler(value = RuleException.class)
     @ResponseBody
     public Result<?> handleRuleException(RuleException e){
+        logger.error("【自定义异常】捕获到RuleException异常",e);
         return Result.error(e.getCode(),e.getMessage());
     }
 }

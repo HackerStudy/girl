@@ -25,7 +25,7 @@ public class HttpAspect {
     public void log(){
     }
 
-    /** com.yangpeng.girl.controller.GirlController包及其子包的方法需要被执行"AOP" */
+    /** com.yangpeng.girl.controller包及其子包的方法需要被执行"AOP" */
     @Pointcut("execution(* com.yangpeng.girl.controller.*.*(..))")
     public void logController(){
     }
