@@ -24,4 +24,34 @@ logging:
   config: src/main/resources/logback-spring.xml
 debug: true #程序运行时开启调试
 
+spring:
+  #数据库
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl?characterEncoding=utf8&useSSL=true
+    username: root
+    password: 123456
+
+  #spring-data-jpa配置
+  jpa:
+    hibernate:
+      #ddl-auto: create #ddl:create：每次运行时自动创建表（如果之前有的话会先删除表再创建）
+      # ddl:create-drop: 应用停下来的时候回删除掉表
+      # ddl:none: 什么都不做
+      # ddl:validate: 验证类里面的属性和表中的字段是否一致，不一致则会报错
+      #ddl:update：第一次运行时自动创建表（如果之前有的话不会操作）
+      dll-auto: update
+    show-sql: true #可以在控制台看到sql语句，方便调试
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect  #将数据库引擎改为InnoDB,InnoDB才支持事务管理
+
+logback:
+  logPath: logs/
+  appName: girl
+#热部署生效
+#spring.devtools.restart.enabled: true
+#设置重启的目录(让devtools监听指定文件夹)
+#spring.devtools.restart.additional-paths: src/main/java
+#classpath目录下的WEB-INF文件夹内容修改不重启
+#spring.devtools.restart.exclude: WEB-INF/**
+
 
