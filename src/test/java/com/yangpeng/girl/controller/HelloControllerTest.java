@@ -63,4 +63,26 @@ public class HelloControllerTest extends ControllerTest {
 //        logger.info("ModelAndView={}",mvcResult.getModelAndView().toString());
         logger.info("CharacterEncoding={}",mvcResult.getResponse().getCharacterEncoding());
     }
+
+    /**
+     * 测试testAround接口
+     */
+    @Test
+    public void testAround()throws Exception{
+        RequestBuilder request = MockMvcRequestBuilders.get("/hello/testAround?result=17")
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(JSON.toJSONString(null));
+        MvcResult mvcResult = mvc.perform(request)
+                .andExpect(handler().handlerType(HelloController.class)) //验证执行的控制器类型
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        String content = mvcResult.getResponse().getContentAsString();
+        System.out.println("响应的数据：");
+        logger.info("content={}",content);
+        logger.info("status={}",status);
+//        logger.info("ModelAndView={}",mvcResult.getModelAndView().toString());
+        logger.info("CharacterEncoding={}",mvcResult.getResponse().getCharacterEncoding());
+    }
 }

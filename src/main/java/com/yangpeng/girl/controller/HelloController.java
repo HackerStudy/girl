@@ -165,4 +165,13 @@ public class HelloController {
         return Result.ok("成功获取到配置文件数据",returnMap);
     }
 
+    /**
+     * 测试aop中的Around
+     * @param result
+     * @return
+     */
+    @GetMapping("/testAround")
+    public String testAround(String result){
+        return "result:"+result;
+    }
 }
