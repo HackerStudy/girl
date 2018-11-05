@@ -1,5 +1,5 @@
 # girl
-## SpringbootDemo
+## Springboot入门demo
 ##### 项目包括的内容：
 1. SpringBoot的基本配置（端口号，访问url的前缀，数据库，日志打印，热部署）
 2. 两种不同的打包方式配置（war，jar）
