@@ -132,6 +132,8 @@ public class HttpAspect {
         logger.info("className:{}",joinPoint.getSignature().getName());
         if(exception instanceof RuleException){
             logger.info("发生自定义异常");
+        }else if(exception instanceof Exception){
+            logger.info("发生系统异常");
         }
     }
 
