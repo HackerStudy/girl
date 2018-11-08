@@ -15,7 +15,8 @@ logging:
   #日志输出到的文件
 #    file: logs/girl.log
   #日志输出级别为debug(日志只输出大于等于debug级别的)
-  level: debug,console
+  level:
+    com.yangpeng.girl: debug,console
   config: src/main/resources/logback-dev.xml
 
 spring:
