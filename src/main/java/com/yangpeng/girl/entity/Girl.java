@@ -1,15 +1,9 @@
 package com.yangpeng.girl.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.Min;
 
-@Entity //这个注解表示该类对应数据库中的表
 public class Girl {
-    @Id //主键
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//自增
+
     private Integer id;
 
     private String cupSize;

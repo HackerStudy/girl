@@ -5,7 +5,7 @@ server:
     context-path: /girl
 
 #查看springboot开启了哪些配置
-debug: true
+#debug: true
 
 #配置日志输出
 logging:
@@ -16,29 +16,26 @@ logging:
 #    file: logs/girl.log
   #日志输出级别为debug(日志只输出大于等于debug级别的)
   level:
-    com.yangpeng.girl: debug,console
+    org:
+      mybatis: debug
+    dao: debug
   config: src/main/resources/logback-dev.xml
 
 spring:
-#数据库
+  #datasource的配置
   datasource:
     name: devgirl
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/dbgirl?characterEncoding=utf8&useSSL=true
     username: root
     password: 123456
-  #spring-data-jpa配置
 
-  jpa:
-    hibernate:
-      #ddl-auto: create #ddl:create：每次运行时自动创建表（如果之前有的话会先删除表再创建）
-      # ddl:create-drop: 应用停下来的时候回删除掉表
-      # ddl:none: 什么都不做
-      # ddl:validate: 验证类里面的属性和表中的字段是否一致，不一致则会报错
-      #ddl:update：第一次运行时自动创建表（如果之前有的话不会操作）
-      dll-auto: update
-    show-sql: true #可以在控制台看到sql语句，方便调试
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect  #将数据库引擎改为InnoDB,InnoDB才支持事务管理
+#mybatis的配置
+mybatis:
+  #mybatis 对应的 .xml文件路径
+  mapper-locations: classpath*:mapper/*.xml
+  #扫描数据持久对应的实体类 路径 Package级别
+  type-aliases-package: com.yangpeng.girl.entity
 
 #热部署生效
 #spring.devtools.restart.enabled: true

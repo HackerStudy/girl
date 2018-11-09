@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--namespace 路径 指向dao层接口-->
+<mapper namespace="com.yangpeng.girl.dao.GirlDao" >
+    <!-- ==================定义sql片段==============
+   sql:是sql片段标签属性id是该片段的唯一标识 -->
+    <sql id="Base_Column_List" >
+      id,cupSize,age
+    </sql>
+
+    <!-- =============映射关系标签=============
+    属性type:写po类的包名类名，由于之前定义了po类的别名，这里就写这个别名
+    属性id：是这个映射标签的唯一标识
+    id标签是查询结果集中的唯一标识
+    属性column：查询出来的列名
+    属性property：是po类里所指定的列名
+    通常会在原列名后面加下划线，这是固定的，这里就是id后面_
+     -->
+    <resultMap type="com.yangpeng.girl.entity.Girl" id="GirlMap">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="cupsize" property="cupsize" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--resultType 指向entity中对应的实体-->
+    <select id="findByAge" parameterType="String" resultType="com.yangpeng.girl.entity.Girl">
+        select  <include refid="Base_Column_List"></include>
+        from girl where age = #{age,jdbcType=VARCHAR}
+    </select>
+
+    <select id="findById" parameterType="String" resultMap="GirlMap">
+        select  <include refid="Base_Column_List"></include>
+        from girl where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="findAll" resultType="com.yangpeng.girl.entity.Girl">
+        select * from girl
+    </select>
+
+    <insert id="save" parameterType="com.yangpeng.girl.entity.Girl" >
+        insert into girl
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="cupsize != null" >
+                cupsize,
+            </if>
+            <if test="age != null" >
+                age,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="cupsize != null" >
+                #{cupsize,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                #{age,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByGirl" parameterType="com.yangpeng.girl.entity.Girl" >
+        update girl
+        <set >
+            <if test="cupsize != null" >
+                cupsize = #{cupsize,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                age = #{age,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+          id = #{id,jdbcType=VARCHAR}
+        </where>
+    </update>
+
+    <update id="updateByMap" parameterType="com.yangpeng.girl.entity.Girl" >
+        update girl
+        <set >
+            <if test="girl.cupsize != null" >
+                cupsize = #{girl.cupsize,jdbcType=VARCHAR},
+            </if>
+            <if test="girl.age != null" >
+                age = #{girl.age,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            id = #{girl.id,jdbcType=VARCHAR}
+        </where>
+    </update>
+
+    <delete id="delete" parameterType="String">
+        delete from girl where id = #{id,jdbcType=INTEGER}
+    </delete>
+</mapper>

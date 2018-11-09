@@ -1,23 +1,19 @@
 package com.yangpeng.girl.controller;
 
-import com.yangpeng.girl.aspect.HttpAspect;
 import com.yangpeng.girl.common.InData;
 import com.yangpeng.girl.common.OtherResult;
 import com.yangpeng.girl.common.OtherResult2;
 import com.yangpeng.girl.common.Result;
 import com.yangpeng.girl.entity.Girl;
-import com.yangpeng.girl.dao.GirlRepository;
 import com.yangpeng.girl.exception.RuleException;
 import com.yangpeng.girl.service.GirlService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,9 +26,6 @@ public class GirlController {
     private static  final Logger logger= LoggerFactory.getLogger(GirlController.class);
 
     @Autowired
-    private GirlRepository girlRepository;
-
-    @Autowired
     private GirlService girlService;
 
     /**
@@ -41,7 +34,7 @@ public class GirlController {
      */
     @GetMapping(value = "/girls")
     public List<Girl> girlList(){
-        return girlRepository.findAll();
+        return girlService.findAll();
     }
 
     /**
@@ -51,12 +44,12 @@ public class GirlController {
      * @return
      */
     @PostMapping(value = "/girls")
-    public Girl girlAdd(@RequestParam("cupSize") String cupSize,
+    public int girlAdd(@RequestParam("cupSize") String cupSize,
                               @RequestParam("age") Integer age){
         Girl girl = new Girl();
         girl.setCupSize(cupSize);
         girl.setAge(age);
-        return girlRepository.save(girl);//save返回的是添加进去的对象
+        return girlService.save(girl);
     }
 
     /**
@@ -66,7 +59,7 @@ public class GirlController {
      */
     @GetMapping(value = "/girls/{id}")
     public Girl girlFindOne(@PathVariable("id") Integer id){
-        return girlRepository.findById(id).orElse(null); //根据id查询数据
+        return girlService.findById(id); //根据id查询数据
     }
 
     /**
@@ -75,14 +68,14 @@ public class GirlController {
      * @return
      */
     @PutMapping(value = "/girls/{id}")
-    public Girl girlUpdate(@PathVariable("id") Integer id,
+    public int girlUpdate(@PathVariable("id") Integer id,
                               @RequestParam("cupSize") String cupSize,
                               @RequestParam("age") Integer age){
         Girl girl = new Girl();
         girl.setId(id);
         girl.setCupSize(cupSize);
         girl.setAge(age);
-        return girlRepository.save(girl); // 如果设置了主键id与数据库中的对应的话就更新那条数据
+        return girlService.updateByGirl(girl); // 如果设置了主键id与数据库中的对应的话就更新那条数据
     }
 
     /**
@@ -91,8 +84,8 @@ public class GirlController {
      * @return
      */
     @DeleteMapping(value = "/girls/{id}")
-    public void girlDelete(@PathVariable("id") Integer id){
-        girlRepository.deleteById(id);//根据主键删除数据
+    public int girlDelete(@PathVariable("id") Integer id){
+        return girlService.delete(id);//根据主键删除数据
     }
 
     /**
@@ -101,7 +94,7 @@ public class GirlController {
      */
     @GetMapping(value = "/girls/age/{age}")
     public List<Girl> findGirlByAge(@PathVariable("age") Integer age){
-        return girlRepository.findByAge(age);//根据年龄查询数据
+        return girlService.findByAge(age);//根据年龄查询数据
     }
 
     /**
@@ -125,7 +118,7 @@ public class GirlController {
             logger.error("未满18岁");
             return "未满18岁";
         }
-        return girlRepository.save(girl);//save返回的是添加进去的对象
+        return girlService.save(girl);//save返回的是添加进去的对象
     }
 
     /**
@@ -140,7 +133,7 @@ public class GirlController {
             logger.error("未满18岁");
             return Result.error("未满18岁");
         }
-        return Result.ok(girlRepository.save(girl));//save返回的是添加进去的对象
+        return Result.ok(girlService.save(girl));//save返回的是添加进去的对象
     }
 
     /**
@@ -155,7 +148,7 @@ public class GirlController {
             logger.error("未满18岁");
             return OtherResult.error("未满18岁");
         }
-        Girl girl1 = girlRepository.save(girl);
+        int i = girlService.save(girl);
 //        Map<String,Object> map = new HashMap();
 //        map.put("id",girl1.getId());
 //        map.put("cupSize",girl1.getCupSize());
@@ -163,7 +156,7 @@ public class GirlController {
 //        OtherResult otherResult = new OtherResult();
 //        otherResult.setData(map);
 //        return otherResult;
-        return OtherResult.ok().putDataValue("girl",girl1);
+        return OtherResult.ok().putDataValue("i",i);
     }
 
     /**
@@ -180,7 +173,7 @@ public class GirlController {
             logger.error("未满18岁");
             return OtherResult2.error("未满18岁");
         }
-        Object obj = girlRepository.save(girl);
+        Object obj = girlService.save(girl);
         return OtherResult2.ok().putDataValue(obj);//save返回的是添加进去的对象
     }
 
@@ -192,7 +185,7 @@ public class GirlController {
     public Result<?> findGirlsByAge(@RequestBody InData inData){
         Map<String,Object> inMap = inData.getInMap();
         Integer age = Integer.valueOf(inMap.get("age").toString());
-        return Result.ok(girlRepository.findByAge(age));//根据年龄查询数据
+        return Result.ok(girlService.findByAge(age));//根据年龄查询数据
     }
 
     /**

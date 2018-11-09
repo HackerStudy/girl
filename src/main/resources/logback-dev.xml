@@ -207,7 +207,7 @@
     <!--</root>-->
 
     <!--测试环境将不同的级别输出到同一个文件中-->
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="DEV_DEBUG_FILE" />
     </root>

@@ -1,6 +1,7 @@
 package com.yangpeng.girl;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +10,11 @@ import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
 
-@SpringBootApplication
 /**
  * Springboot的启动类
  */
+@SpringBootApplication
+@MapperScan(basePackages = {"com.yangpeng.girl.dao.*"}) //mybatis指定的扫描dao层的路径
 public class GirlApplication {
 
     public static void main(String[] args) {
@@ -23,7 +25,7 @@ public class GirlApplication {
     private Environment env;
 
     //destroy-method="close"的作用是当数据库连接不使用的时候,就把该连接重新放到数据池中,方便下次使用调用.
-    @Bean(destroyMethod =  "close")
+    @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl(env.getProperty("spring.datasource.url"));
