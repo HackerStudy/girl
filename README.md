@@ -7,7 +7,7 @@
 4. Springboot AOP
 5. 统一异常处理
 6. 前端统一请求类型和统一返回类类型的工具类
-7. Mybatis
+7. Mybatis+通用mapper
 8. restful风格的接口设计
 9. 表单验证
 10. 事务管理
