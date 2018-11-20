@@ -21,7 +21,7 @@ public class CodeGeneration {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("E://code");
+        gc.setOutputDir("D://ToolSoftWare//IDEA//WorkSpace//MyProject//Code");
         gc.setFileOverride(true);
         gc.setActiveRecord(false);// 不需要ActiveRecord特性的请改为false
         gc.setEnableCache(false);// XML 二级缓存
