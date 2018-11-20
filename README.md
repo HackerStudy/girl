@@ -7,7 +7,7 @@
 4. Springboot AOP
 5. 统一异常处理
 6. 前端统一请求类型和统一返回类类型的工具类
-7. Mybatis+mybatis-plus
+7. Mybatis
 8. restful风格的接口设计
 9. 表单验证
 10. 事务管理
@@ -18,5 +18,4 @@
 15. 单元测试（api，service和日志打印的单元测试）
 16. 统一404页面处理和500的json异常处理
 17. git的分支架构
-18. druid连接池配置
-19. logback的日志配置
+18. logback的日志配置
