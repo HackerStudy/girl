@@ -32,4 +32,6 @@ public interface GirlService {
     int updateByGirl(Girl girl);
 
     int updateByMap(Girl girl);
+
+    int insertBatch(List<Girl> list);
 }

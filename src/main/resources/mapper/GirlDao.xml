@@ -37,31 +37,31 @@
         select * from girl
     </select>
 
-    <insert id="save" parameterType="com.yangpeng.girl.entity.Girl" >
-        insert into girl
-        <trim prefix="(" suffix=")" suffixOverrides="," >
-            <if test="id != null" >
-                id,
-            </if>
-            <if test="cupsize != null" >
-                cupsize,
-            </if>
-            <if test="age != null" >
-                age,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides="," >
-            <if test="id != null" >
-                #{id,jdbcType=INTEGER},
-            </if>
-            <if test="cupsize != null" >
-                #{cupsize,jdbcType=VARCHAR},
-            </if>
-            <if test="age != null" >
-                #{age,jdbcType=INTEGER},
-            </if>
-        </trim>
-    </insert>
+    <!--<insert id="save" parameterType="com.yangpeng.girl.entity.Girl" >-->
+        <!--insert into girl-->
+        <!--<trim prefix="(" suffix=")" suffixOverrides="," >-->
+            <!--<if test="id != null" >-->
+                <!--id,-->
+            <!--</if>-->
+            <!--<if test="cupsize != null" >-->
+                <!--cupsize,-->
+            <!--</if>-->
+            <!--<if test="age != null" >-->
+                <!--age,-->
+            <!--</if>-->
+        <!--</trim>-->
+        <!--<trim prefix="values (" suffix=")" suffixOverrides="," >-->
+            <!--<if test="id != null" >-->
+                <!--#{id,jdbcType=INTEGER},-->
+            <!--</if>-->
+            <!--<if test="cupsize != null" >-->
+                <!--#{cupsize,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test="age != null" >-->
+                <!--#{age,jdbcType=INTEGER},-->
+            <!--</if>-->
+        <!--</trim>-->
+    <!--</insert>-->
 
     <update id="updateByGirl" parameterType="com.yangpeng.girl.entity.Girl" >
         update girl
@@ -93,7 +93,7 @@
         </where>
     </update>
 
-    <delete id="delete" parameterType="String">
-        delete from girl where id = #{id,jdbcType=INTEGER}
-    </delete>
+    <!--<delete id="delete" parameterType="String">-->
+        <!--delete from girl where id = #{id,jdbcType=INTEGER}-->
+    <!--</delete>-->
 </mapper>

@@ -38,13 +38,13 @@ public class GirlServiceImpl implements GirlService{
 //        girl1.setId(3);
         girl1.setCupSize("B");
         girl1.setAge(20);
-        girlDao.save(girl1);
+        girlDao.insert(girl1);
 
         Girl girl2 = new Girl();
 //        girl2.setId(4);
         girl2.setAge(22);
         girl2.setCupSize("DDDD");
-        girlDao.save(girl2);
+        girlDao.insert(girl2);
     }
 
 
@@ -103,12 +103,12 @@ public class GirlServiceImpl implements GirlService{
 
     @Override
     public int save(Girl girl) {
-        return girlDao.save(girl);
+        return girlDao.insert(girl);
     }
 
     @Override
     public int delete(Integer id) {
-        return girlDao.delete(id);
+        return girlDao.deleteByPrimaryKey(id);
     }
 
     @Override
@@ -119,6 +119,11 @@ public class GirlServiceImpl implements GirlService{
     @Override
     public int updateByMap(Girl girl) {
         return girlDao.updateByMap(girl);
+    }
+
+    @Override
+    public int insertBatch(List<Girl> list) {
+        return girlDao.insertList(list);
     }
 
 

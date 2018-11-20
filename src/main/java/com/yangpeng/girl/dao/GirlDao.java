@@ -1,5 +1,6 @@
 package com.yangpeng.girl.dao;
 
+import com.yangpeng.girl.common.BaseMapper;
 import com.yangpeng.girl.entity.Girl;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -13,7 +14,7 @@ import java.util.List;
  * @date: 2018-11-09 09:09
  */
 @Mapper
-public interface GirlDao {
+public interface GirlDao extends BaseMapper<Girl> {
 
     /**
      * 按年龄查找
@@ -32,13 +33,6 @@ public interface GirlDao {
     Girl findById(@Param("id") Integer id);
 
     /**
-     * 保存
-     * @param girl
-     * @return
-     */
-    int save(Girl girl);
-
-    /**
      * 更新通过girl
      * @param girl
      * @return
@@ -51,11 +45,4 @@ public interface GirlDao {
      * @return
      */
     int updateByMap(Girl girl);
-
-    /**
-     * 删除
-     * @param id
-     * @return
-     */
-    int delete(@Param("id") Integer id);
 }

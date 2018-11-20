@@ -1,17 +1,13 @@
 package com.yangpeng.girl.service;
-import com.yangpeng.girl.GirlApplicationTests;
+
 import com.yangpeng.girl.entity.Girl;
 import com.yangpeng.girl.exception.RuleException;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @class: GirlServiceTest
@@ -46,5 +42,26 @@ public class GirlServiceTest extends ServiceTest {
 
     @Test
     public void getAgeByIdThrowException() {
+    }
+
+    @Test
+    public void insertBatch(){
+        List<Girl> girlList = new ArrayList<Girl>();
+        Girl girl1 =new Girl();
+//        girl1.setId(14);
+        girl1.setCupSize("B");
+        girl1.setAge(18);
+        girlList.add(girl1);
+        Girl girl2 = new Girl();
+//        girl2.setId(15);
+        girl2.setCupSize("D");
+        girl2.setAge(24);
+        girlList.add(girl2);
+        girlService.insertBatch(girlList);
+    }
+
+    @Test
+    public void delete() {
+        girlService.delete(13);
     }
 }

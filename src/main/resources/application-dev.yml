@@ -30,12 +30,22 @@ spring:
     username: root
     password: 123456
 
-#mybatis的配置
+#mybatis的配置&&通用Mapper配置
 mybatis:
   #mybatis 对应的 .xml文件路径
   mapper-locations: classpath*:mapper/*.xml
   #扫描数据持久对应的实体类 路径 Package级别
   type-aliases-package: com.yangpeng.girl.entity
+mapper:
+  mappers: com.yangpeng.girl.common.BaseMapper
+  identity: MYSQL
+
+#分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 
 #热部署生效
 #spring.devtools.restart.enabled: true
@@ -57,5 +67,7 @@ content: "cupSize: ${cupSize},age: ${age}}"
 girl:
   cupSize: B
   age: 18
+
+
 
 

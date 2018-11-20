@@ -1,13 +1,18 @@
 package com.yangpeng.girl.entity;
 
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 
+@Table(name = "girl")
 public class Girl {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY,generator = "JDBC")
     private Integer id;
 
+    @Column(name = "cup_size")
     private String cupSize;
 
+    @Column(name = "age")
     @Min(value = 18,message = "不满18岁") //校验条件
     private Integer age;
 
