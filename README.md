@@ -16,3 +16,7 @@
 13. 枚举
 14. 自定义异常
 15. 单元测试（api，service和日志打印的单元测试）
+16. 统一的错误处理页面
+17. mybatis puls和mybatis
+18. druid连接池
+19. 通用mapper
